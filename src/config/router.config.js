@@ -1,12 +1,15 @@
-// eslint-disable-next-line
-import { UserLayout, BasicLayout, BlankLayout } from '@/layouts'
-import { bxAnaalyse } from '@/core/icons'
+import { UserLayout, BasicLayout, PageView } from '@/layouts' // 页面布局
+import { bxAnaalyse } from '@/core/icons' // 自定义图标引入
 
 const RouteView = {
   name: 'RouteView',
   render: h => h('router-view')
 }
 
+/**
+ * 动态路由
+ * @type { *[] }
+ */
 export const asyncRouterMap = [
   {
     path: '/',
@@ -126,7 +129,6 @@ export const asyncRouterMap = [
           }
         ]
       },
-
       // profile
       {
         path: '/profile',
@@ -149,7 +151,6 @@ export const asyncRouterMap = [
           }
         ]
       },
-
       // result
       {
         path: '/result',
@@ -172,7 +173,6 @@ export const asyncRouterMap = [
           }
         ]
       },
-
       // Exception
       {
         path: '/exception',
@@ -201,7 +201,6 @@ export const asyncRouterMap = [
           }
         ]
       },
-
       // account
       {
         path: '/account',
@@ -267,10 +266,8 @@ export const asyncRouterMap = [
             ]
           }
         ]
-      }
-
+      },
       // other
-      /*
       {
         path: '/other',
         name: 'otherPage',
@@ -315,12 +312,6 @@ export const asyncRouterMap = [
                 meta: { title: '角色列表', keepAlive: true }
               },
               {
-                path: '/other/list/system-role',
-                name: 'SystemRole',
-                component: () => import('@/views/role/RoleList'),
-                meta: { title: '角色列表2', keepAlive: true }
-              },
-              {
                 path: '/other/list/permission-list',
                 name: 'PermissionList',
                 component: () => import('@/views/other/PermissionList'),
@@ -330,7 +321,6 @@ export const asyncRouterMap = [
           }
         ]
       }
-      */
     ]
   },
   {
@@ -373,7 +363,6 @@ export const constantRouterMap = [
       }
     ]
   },
-
   {
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
