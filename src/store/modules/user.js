@@ -14,7 +14,6 @@ const user = {
     roles: [],
     info: {}
   },
-
   mutations: {
     SET_TOKEN: (state, token) => {
       state.token = token
@@ -33,7 +32,6 @@ const user = {
       state.info = info
     }
   },
-
   actions: {
     // 登录
     Login ({ commit }, userInfo) {
@@ -48,7 +46,6 @@ const user = {
         })
       })
     },
-
     // 获取用户信息
     GetInfo ({ commit }) {
       return new Promise((resolve, reject) => {
@@ -67,7 +64,6 @@ const user = {
             role.permissionList = role.permissions.map(permission => { return permission.permissionId })
             // 覆盖响应体的 role, 供下游使用
             result.role = role
-
             commit('SET_ROLES', role)
             commit('SET_INFO', result)
             commit('SET_NAME', { name: result.name, welcome: welcome() })
@@ -82,7 +78,6 @@ const user = {
         })
       })
     },
-
     // 登出
     Logout ({ commit, state }) {
       return new Promise((resolve) => {
@@ -98,7 +93,6 @@ const user = {
         })
       })
     }
-
   }
 }
 

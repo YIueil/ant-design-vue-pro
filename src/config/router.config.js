@@ -16,8 +16,16 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: 'menu.home' },
-    redirect: '/dashboard/workplace',
+    redirect: '/account',
     children: [
+      // yl-acc
+      {
+        path: '/account',
+        name: 'accountCenter',
+        redirect: '/account/center',
+        component: RouteView,
+        meta: { title: '个人中心', keepAlive: true, icon: 'user', permission: ['dashboard'] }
+      },
       // dashboard
       {
         path: '/dashboard',
