@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
       if (store.getters.roles.length === 0) {
         // request login userInfo
         store
-          .dispatch('GetInfo')
+          .dispatch('InitUserInfo')
           .then(res => {
             console.log('res', res)
             // 根据用户权限信息生成可访问的路由表

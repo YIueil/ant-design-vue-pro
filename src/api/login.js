@@ -10,6 +10,8 @@ const userApi = {
   SendSms: '/account/sms',
   SendSmsErr: '/account/sms_err',
   // get my info
+  userPermissions: '/bdf-web/user/permissions',
+  userRoles: '/bdf-web/user/roles',
   UserMenu: '/user/nav'
 }
 
@@ -53,6 +55,20 @@ export function getInfo () {
 export function getCurrentUserNav () {
   return request({
     url: userApi.UserMenu,
+    method: 'get'
+  })
+}
+
+export function getCurrentUserPermissions () {
+  return request({
+    url: userApi.userPermissions,
+    method: 'get'
+  })
+}
+
+export function getCurrentUserRoles () {
+  return request({
+    url: userApi.userRoles,
     method: 'get'
   })
 }
