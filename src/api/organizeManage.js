@@ -1,19 +1,23 @@
 import request from '@/utils/request'
 
 const api = {
-  user: '/user',
   role: '/role',
   service: '/service',
   permission: '/permission',
   permissionNoPager: '/permission/no-pager',
-  orgTree: '/org/tree'
+  orgTree: '/org/tree',
+  // 用户管理
+  getUserList: '/bdf-web/user/list',
+  getUser: '/bdf-web/orup/getUser',
+  addUser: '/bdf-web/orup/addUser',
+  delUser: '/bdf-web/orup/delUser'
 }
 
 export default api
 
 export function getUserList (parameter) {
   return request({
-    url: api.user,
+    url: api.getUserList,
     method: 'get',
     params: parameter
   })

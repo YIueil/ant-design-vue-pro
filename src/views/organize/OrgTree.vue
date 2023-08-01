@@ -54,7 +54,7 @@
 <script>
 import STree from '@/components/Tree/Tree'
 import { STable } from '@/components'
-import { getOrgTree, getServiceList } from '@/api/manage'
+import { getOrgTree, getServiceList } from '@/api/organizeManage'
 
 export default {
   name: 'OrgTree',
