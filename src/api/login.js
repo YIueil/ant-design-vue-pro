@@ -3,15 +3,16 @@ import request from '@/utils/request'
 const userApi = {
   Login: '/bdf-web/orup/login',
   Logout: '/bdf-web/orup/logout',
-  UserInfo: '/bdf-web/orup/currentUser',
+  CurrentUser: '/bdf-web/orup/currentUser',
+  CurrentUser2: '/bdf-web/orup/currentUser2',
   ForgePassword: '/auth/forge-password',
   Register: '/auth/register',
   twoStepCode: '/auth/2step-code',
   SendSms: '/account/sms',
   SendSmsErr: '/account/sms_err',
   // get my info
-  userPermissions: '/bdf-web/user/permissions',
-  userRoles: '/bdf-web/user/roles',
+  UserPermissions: '/bdf-web/user/permissions',
+  UserRoles: '/bdf-web/user/roles',
   UserMenu: '/user/nav'
 }
 
@@ -44,7 +45,7 @@ export function getSmsCaptcha (parameter) {
 
 export function getInfo () {
   return request({
-    url: userApi.UserInfo,
+    url: userApi.CurrentUser,
     method: 'get',
     headers: {
       'Content-Type': 'application/json;charset=UTF-8'
@@ -61,14 +62,14 @@ export function getCurrentUserNav () {
 
 export function getCurrentUserPermissions () {
   return request({
-    url: userApi.userPermissions,
+    url: userApi.UserPermissions,
     method: 'get'
   })
 }
 
 export function getCurrentUserRoles () {
   return request({
-    url: userApi.userRoles,
+    url: userApi.UserRoles,
     method: 'get'
   })
 }

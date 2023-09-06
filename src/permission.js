@@ -29,10 +29,10 @@ router.beforeEach((to, from, next) => {
         // request login userInfo
         store
           .dispatch('InitUserInfo')
-          .then(res => {
-            console.log('res', res)
+          .then(() => {
+            const permissions = store.getters.permissions
             // 根据用户权限信息生成可访问的路由表
-            store.dispatch('GenerateRoutes', { token, ...res }).then(() => {
+            store.dispatch('GenerateRoutes', permissions).then(() => {
               // 动态添加可访问路由表
               // VueRouter@3.5.0+ New API
               resetRouter() // 重置路由 防止退出重新登录或者 token 过期后页面未刷新，导致的路由重复添加
@@ -50,7 +50,8 @@ router.beforeEach((to, from, next) => {
               }
             })
           })
-          .catch(() => {
+          .catch((err) => {
+            console.log(err)
             notification.error({
               message: '错误',
               description: '请求用户信息失败，请重试'

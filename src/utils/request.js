@@ -54,7 +54,20 @@ request.interceptors.request.use(config => {
 
 // response interceptor
 request.interceptors.response.use((response) => {
-  return response.data
+  // todo mock适配
+  if (!response.data.msg) {
+    return response.data.result
+  }
+  // 异常报错
+  if (response.data.msg === 'success') {
+    return response.data
+  } else {
+    notification.error({
+      message: response.data.msg,
+      description: response.data.tips
+    })
+    // throw new Error()
+  }
 }, errorHandler)
 
 const installer = {

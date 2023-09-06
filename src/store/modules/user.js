@@ -1,5 +1,6 @@
 import storage from 'store'
 import expirePlugin from 'store/plugins/expire'
+
 import { login, logout, getInfo, getCurrentUserPermissions, getCurrentUserRoles } from '@/api/login'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 import { welcome } from '@/utils/util'
@@ -12,6 +13,7 @@ const user = {
     welcome: '',
     avatar: '',
     roles: [],
+    permissions: [],
     userInfo: {}
   },
   mutations: {
@@ -27,6 +29,9 @@ const user = {
     },
     SET_ROLES: (state, roles) => {
       state.roles = roles
+    },
+    SET_PERMISSIONS: (state, permissions) => {
+      state.permissions = permissions
     },
     SET_INFO: (state, info) => {
       state.userInfo = info
@@ -92,7 +97,11 @@ const user = {
     GetRoles ({ commit }) {
       return new Promise((resolve, reject) => {
         getCurrentUserRoles().then(response => {
+          const { body } = response
+          commit('SET_ROLES', body)
           resolve(response)
+        }).catch(error => {
+          reject(error)
         })
       })
     },
@@ -100,7 +109,11 @@ const user = {
     GetPermissions ({ commit }) {
       return new Promise((resolve, reject) => {
         getCurrentUserPermissions().then(response => {
+          const { body } = response
+          commit('SET_PERMISSIONS', body)
           resolve(response)
+        }).catch(error => {
+          reject(error)
         })
       })
     }
