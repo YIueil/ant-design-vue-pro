@@ -65,7 +65,7 @@ const user = {
     async InitUserInfo ({ dispatch }) {
       // todo 异步操作获取到所有的用户信息
       await dispatch('GetUserInfo')
-      // await dispatch('GetRoles')
+      await dispatch('GetRoles')
       await dispatch('GetPermissions')
     },
     // 获取用户信息
